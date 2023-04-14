@@ -1,6 +1,7 @@
 const inquirer = require("inquirer")
 const maxLengthInput = require("inquirer-maxlength-input-prompt")
 const fs = require("fs")
+const shapes = require("./lib/shapes")
 
 inquirer.registerPrompt("maxLengthInputPrompt", maxLengthInput)
 
@@ -33,24 +34,20 @@ inquirer.prompt([
 })
 
 const writeSVG = (fileName, data) => {
-    const fileContent = renderSVG(data)
 
-    fs.writeFile(fileName, fileContent, (err) => 
-    err ? console.log(error) : console.log("Generated logo.svg"))
-}
+    const shape = new shapes.Shapes(data.textColor, data.shapeColor, data.text)
+    
+    if (data.shape === rectangle) {
+        fs.writeFile(fileName, shape.shapes.Rectangle(), (err) => 
+        err ? console.log(err) : console.log("Generated logo.svg"))
 
-const renderSVG = (data) => {
-    return `
-<svg version="1.1"
-    width="300" height="200"
-    xmlns="http://www.w3.org/2000/svg">
+    } else if (data.shape === triangle) {
+        fs.writeFile(fileName, shape.shapes.Triangle(), (err) => 
+        err ? console.log(err) : console.log("Generated logo.svg"))
 
- <rect width="100%" height="100%" fill="red" />
+    } else {
+        fs.writeFile(fileName, shape.shapes.Circle(), (err) => 
+        err ? console.log(err) : console.log("Generated logo.svg"))
+    }
 
- <circle cx="150" cy="100" r="80" fill="green" />
-
- <text x="150" y="125" font-size="60" text-anchor="middle" fill="white">SVG</text>
-
-</svg>
-`
 }
