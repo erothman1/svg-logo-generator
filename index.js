@@ -9,13 +9,13 @@ inquirer.prompt([
     {
         type: "maxLengthInputPrompt",
         name: "text",
-        message: "What text would you like on your logo?", //should text be made to be all caps?
-        maxLength: 3, //only allow 3 letters 
+        message: "What text would you like on your logo? Please enter 3 characters", 
+        maxLength: 3, 
     },
     {
         type: "input",
         name: "textColor",
-        message: "Text color?", //only allow color keyword or hexadecimal number
+        message: "Text color? Please enter a color keyword or hexadecimal number", 
     }, 
     {
         type: "list",
@@ -26,7 +26,7 @@ inquirer.prompt([
     {
         type: "input", 
         name: "shapeColor",
-        message: "Shape color?" //only allow color keyword or hexadecimal number
+        message: "Shape color? Please enter a color keyword or hexadecimal number"
     }
 ]).then((response) => {
     console.log(response)
