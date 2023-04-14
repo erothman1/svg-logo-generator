@@ -2,8 +2,8 @@
         width="300" height="200"
         xmlns="http://www.w3.org/2000/svg">
 
-        <rect x="10" y="10" width="30" height="30" fill="pink"/>
+        <rect x="10" y="10" width="30" height="30" fill="blue"/>
 
-        <text x="150" y="125" font-size="60" text-anchor="middle" fill="blue">err</text>
+        <text x="150" y="125" font-size="60" text-anchor="middle" fill="green">err</text>
 
         </svg>
