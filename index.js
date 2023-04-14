@@ -1,3 +1,37 @@
+const inquirer = require("inquirer")
+const maxLengthInput = require("inquirer-maxlength-input-prompt")
+
+inquirer.registerPrompt("maxLengthInputPrompt", maxLengthInput)
+
+inquirer.prompt([
+    {
+        type: "maxLengthInputPrompt",
+        name: "text",
+        message: "What text would you like on your logo?",
+        maxLength: 3,
+    },
+    {
+        type: "input",
+        name: "textColor",
+        message: "Text color?", //only allow color keyword or hexadecimal number
+    }, 
+    {
+        type: "list",
+        name: "shape",
+        message: "What shape?",
+        choices: ["rectangle", "triangle", "circle"],
+    },
+    {
+        type: "input", 
+        name: "shapeColor",
+        message: "Shape color?" //only allow color keyword or hexadecimal number
+    }
+])
+
+
+
+
+
 const writeHTML = (data) => {
     return `
 <svg version="1.1"
