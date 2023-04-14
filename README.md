@@ -5,12 +5,20 @@ This project allows me to dynamically create a custom SVG file quickly and effic
 
 ## Usage 
 To use this application, you must git clone this repository to your local computer. Navigate to the repository through the terminal. 
-Once, you've done that, type in the following command:
+Once, you've done that, type in the following command to create your SVG:
 
 ```bash
 node index.js
 ```
+
+To run tests, type in the following command:
+
+```bash
+npm run test
+```
+
 Here is a video of me walking through the steps to use this application
+
 ![Walk Through](./images/screenRecording.gif)
 
 Here is a screenshot of the SVG created 
