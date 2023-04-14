@@ -34,19 +34,23 @@ inquirer.prompt([
 })
 
 const writeSVG = (fileName, data) => {
-
-    const shape = new shapes.Shapes(data.textColor, data.shapeColor, data.text)
     
-    if (data.shape === rectangle) {
-        fs.writeFile(fileName, shape.shapes.Rectangle(), (err) => 
+    if (data.shape === "rectangle") {
+        const shape = new shapes.Rectangle(data.textColor, data.shapeColor, data.text)
+
+        fs.writeFile(fileName, shape.createRectangle(data.textColor, data.shapeColor, data.text), (err) => 
         err ? console.log(err) : console.log("Generated logo.svg"))
 
-    } else if (data.shape === triangle) {
-        fs.writeFile(fileName, shape.shapes.Triangle(), (err) => 
+    } else if (data.shape === "triangle") {
+        const shape = new shapes.Triangle(data.textColor, data.shapeColor, data.text)
+
+        fs.writeFile(fileName, shape.createTriangle(data.textColor, data.shapeColor, data.text), (err) => 
         err ? console.log(err) : console.log("Generated logo.svg"))
 
     } else {
-        fs.writeFile(fileName, shape.shapes.Circle(), (err) => 
+        const shape = new shapes.Circle(data.textColor, data.shapeColor, data.text)
+
+        fs.writeFile(fileName, shape.createCircle(data.textColor, data.shapeColor, data.text), (err) => 
         err ? console.log(err) : console.log("Generated logo.svg"))
     }
 
