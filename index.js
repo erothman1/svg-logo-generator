@@ -1,5 +1,6 @@
 const inquirer = require("inquirer")
 const maxLengthInput = require("inquirer-maxlength-input-prompt")
+const fs = require("fs")
 
 inquirer.registerPrompt("maxLengthInputPrompt", maxLengthInput)
 
@@ -8,7 +9,7 @@ inquirer.prompt([
         type: "maxLengthInputPrompt",
         name: "text",
         message: "What text would you like on your logo?",
-        maxLength: 3,
+        maxLength: 3, //only allow 3 letters 
     },
     {
         type: "input",
@@ -26,13 +27,19 @@ inquirer.prompt([
         name: "shapeColor",
         message: "Shape color?" //only allow color keyword or hexadecimal number
     }
-])
+]).then((response) => {
+    console.log(response)
+    writeSVG("logo.svg", response)
+})
 
+const writeSVG = (fileName, data) => {
+    const fileContent = renderSVG(data)
 
+    fs.writeFile(fileName, fileContent, (err) => 
+    err ? console.log(error) : console.log("Generated logo.svg"))
+}
 
-
-
-const writeHTML = (data) => {
+const renderSVG = (data) => {
     return `
 <svg version="1.1"
     width="300" height="200"
